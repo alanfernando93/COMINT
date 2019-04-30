@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">COMINT</string>
+    <string name="txt_arancel">Arancel</string>
+    <string name="txt_tema">Tema</string>
+    <string name="txt_practica">Practica</string>
+    <string name="txt_usuario">Usuario</string>
+    <string name="txt_contraseña">Contraseña</string>
+    <string name="txt_contenido">Contenido</string>
+    <string name="txt_salir">Salir</string>
+    <string name="app_toolbar">Menu de herramientas</string>
+    <string name="edit_search">Search</string>
 </resources>
