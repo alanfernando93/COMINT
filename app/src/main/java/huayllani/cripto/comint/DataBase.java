@@ -18,11 +18,11 @@ public class DataBase {
     private Statement st = null;
     private ResultSet rs = null;
 
-    protected String HOST = "192.168.1.105";
+    protected String HOST = "sql10.freesqldatabase.com";
     protected String PORT = "3306";
-    protected String USER = "arduino";
-    protected String PASSWORD = "oracle";
-    protected String DB_NAME = "dbcomint";
+    protected String USER = "sql10289788";
+    protected String PASSWORD = "H7hJdnRyg3";
+    protected String DB_NAME = "sql10289788";
 
     private void init() throws SQLException {
         connection = DriverManager.getConnection(getUrl(), USER, PASSWORD);
@@ -32,19 +32,6 @@ public class DataBase {
     private void close() throws SQLException {
         if(connection != null) connection.close();
     }
-
-//    public String[] query() {
-//        String[] result = null;
-//        try {
-//            String driver = "com.mysql.jdbc.Driver";
-//            Class.forName(driver).newInstance();
-//            String sql = "select * from Usuario";
-//            result = new consultas(sql).execute().get();
-//        }catch (Exception ex) {
-//            Log.d("Error al obtener result", ex.getMessage());
-//        }
-//        return result;
-//    }
 
     public ResultSet query(final String sql) throws Exception {
         String driver = "com.mysql.jdbc.Driver";
@@ -97,6 +84,36 @@ public class DataBase {
             }
         }
         return data;
+    }
+
+    public boolean isLogin(String username, String password) {
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        Boolean is = false;
+        try {
+            rs = query("select * from Usuario where usuario='" + username + "' and contraseña=" + password);
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("nombre"),
+                        rs.getString("turno"),
+                        rs.getString("paralelo"),
+                        rs.getString("usuario"),
+                        rs.getString("contraseña")
+                });
+            }
+            if (data.size() > 0) is = true;
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return is;
     }
 
 }
