@@ -18,11 +18,11 @@ public class DataBase {
     private Statement st = null;
     private ResultSet rs = null;
 
-    protected String HOST = "sql10.freesqldatabase.com";
+    protected String HOST = "192.168.1.105";
     protected String PORT = "3306";
-    protected String USER = "sql10289788";
-    protected String PASSWORD = "H7hJdnRyg3";
-    protected String DB_NAME = "sql10289788";
+    protected String USER = "arduino";
+    protected String PASSWORD = "oracle";
+    protected String DB_NAME = "dbcomint";
 
     private void init() throws SQLException {
         connection = DriverManager.getConnection(getUrl(), USER, PASSWORD);
@@ -116,4 +116,290 @@ public class DataBase {
         return is;
     }
 
+    public ArrayList<String[]> getTemas(){
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Temas");
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("titulo"),
+                        rs.getString("contenido"),
+                        rs.getString("imagen_tem")
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public ArrayList<String[]> getTemas(String id){
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Temas where id=" + Integer.parseInt(id));
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("titulo"),
+                        rs.getString("contenido"),
+                        rs.getString("imagen_tem")
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public ArrayList<String[]> getArancel(String character){
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Arancel where descripcion like '%" + character.trim() + "%'");
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("partida"),
+                        String.valueOf(rs.getInt("sidunea")),
+                        rs.getString("descripcion"),
+                        rs.getString("ga"),
+                        rs.getString("ICE/IEHD"),
+                        rs.getString("uni_med"),
+                        rs.getString("can"),
+                        rs.getString("ace 36_merc"),
+                        rs.getString("chi"),
+                        rs.getString("prot"),
+                        rs.getString("ace_66"),
+                        rs.getString("ace_47"),
+                        rs.getString("ven"),
+                        String.valueOf(rs.getInt("idCapitulo")),
+                        String.valueOf(rs.getInt("idDocumentos")),
+                        String.valueOf(rs.getInt("idUsuario"))
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public ArrayList<String[]> getArancelById(String id){
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Arancel where id=" + id);
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("partida"),
+                        String.valueOf(rs.getInt("sidunea")),
+                        rs.getString("descripcion"),
+                        rs.getString("ga"),
+                        rs.getString("ICE/IEHD"),
+                        rs.getString("uni_med"),
+                        rs.getString("can"),
+                        rs.getString("ace 36_merc"),
+                        rs.getString("chi"),
+                        rs.getString("prot"),
+                        rs.getString("ace_66"),
+                        rs.getString("ace_47"),
+                        rs.getString("ven"),
+                        String.valueOf(rs.getInt("idCapitulo")),
+                        String.valueOf(rs.getInt("idDocumentos")),
+                        String.valueOf(rs.getInt("idUsuario"))
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public ArrayList<String[]> getCapituloById(String id){
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Capitulo where id=" + id);
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("id"),
+                        rs.getString("id"),
+                        String.valueOf(rs.getInt("id"))
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public ArrayList<String[]> getDocumentById(String id){
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Documentos where id=" + id);
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("tipo"),
+                        rs.getString("entidad"),
+                        rs.getString("displegal")
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public ArrayList<String[]> getPracticas(){
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Preguntas");
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("contenido"),
+                        rs.getString("imagen"),
+                        String.valueOf(rs.getString("idTemas"))
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public ArrayList<String[]> getPracticas(String idTemas){
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Preguntas where idTemas=" + idTemas);
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("contenido"),
+                        rs.getString("imagen"),
+                        String.valueOf(rs.getString("idTemas"))
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public ArrayList<String[]> getRespuestas() {
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Respuestas");
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("contenido"),
+                        String.valueOf(rs.getInt("estado")),
+                        String.valueOf(rs.getString("idTemas"))
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public ArrayList<String[]> getRespuestas(String idPreguntas) {
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        try {
+            rs = query("select * from Respuestas where idPreguntas=" + idPreguntas);
+            while (rs.next()) {
+                data.add(new String[]{
+                        String.valueOf(rs.getInt("id")),
+                        rs.getString("contenido"),
+                        String.valueOf(rs.getInt("estado")),
+                        String.valueOf(rs.getString("idPreguntas")),
+                        String.valueOf(rs.getString("idTemas"))
+                });
+            }
+        } catch (Exception ex){
+            Log.e("Error ", ex.getMessage());
+        }finally {
+            try{
+                st.close();
+                rs.close();
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
 }

@@ -29,11 +29,13 @@ public class menu extends AppCompatActivity {
 
     public void onTema(View view) {
         Intent temas = new Intent(this, TemasPracticas.class);
+        temas.putExtra("title", "Temas");
         startActivity(temas);
     }
 
     public void onPractica(View view) {
         Intent practica = new Intent(this, TemasPracticas.class);
+        practica.putExtra("title", "Practicas");
         startActivity(practica);
     }
 

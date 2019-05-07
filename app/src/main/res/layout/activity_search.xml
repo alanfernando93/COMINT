@@ -60,21 +60,6 @@
     </android.support.v7.widget.Toolbar>
 
 
-    <EditText
-        android:id="@+id/edit_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="58dp"
-        android:layout_marginLeft="58dp"
-        android:layout_marginTop="130dp"
-        android:contentDescription="@string/edit_search"
-        android:ems="10"
-        android:hint="@string/edit_search"
-        android:inputType="textWebEditText|textPersonName" />
-
     <TextView
         android:id="@+id/txt_view_arancel"
         android:layout_width="wrap_content"
@@ -93,6 +78,20 @@
         android:typeface="serif"
         app:fontFamily="sans-serif-black" />
 
+    <EditText
+        android:id="@+id/edit_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="131dp"
+        android:ems="10"
+        android:hint="@string/edit_search"
+        android:inputType="textPersonName" />
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="42dp"
@@ -104,12 +103,14 @@
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:background="@android:color/darker_gray"
+        android:onClick="onSearch"
         app:srcCompat="@android:drawable/ic_menu_search" />
 
     <ListView
+        android:id="@+id/list_view_arancel"
         style="@style/Widget.AppCompat.ListView"
-        android:layout_width="325dp"
-        android:layout_height="384dp"
+        android:layout_width="326dp"
+        android:layout_height="409dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
