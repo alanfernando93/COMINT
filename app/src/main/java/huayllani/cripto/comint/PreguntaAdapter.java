@@ -27,6 +27,7 @@ public class PreguntaAdapter extends BaseAdapter {
     private static LayoutInflater inflater = null;
 
     int count;
+    Map<Integer, Boolean> success = new HashMap<Integer, Boolean>();
     Context contexto;
     RadioButton btn_resp;
 
@@ -53,6 +54,14 @@ public class PreguntaAdapter extends BaseAdapter {
         return 0;
     }
 
+    public Map<Integer, Boolean> getPoints() {
+        return success;
+    }
+
+    public void initPoint() {
+        success.clear();
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final View vista = inflater.inflate(R.layout.item_pregunta, null);
@@ -62,19 +71,21 @@ public class PreguntaAdapter extends BaseAdapter {
 
         title_preg.setText(preg.get(position)[1]);
         resp = db.getRespuestas(preg.get(position)[0]);
+
+        group.setId(Integer.parseInt(preg.get(position)[0]));
         for (String[] row: resp) {
             btn_resp = new RadioButton(contexto);
+
             btn_resp.setId(Integer.parseInt(row[0]));
             btn_resp.setText(row[1]);
             btn_resp.setTag(row[2]);
             btn_resp.setTextSize(10);
+
             group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     RadioButton rb= (RadioButton) vista.findViewById(checkedId);
-                    if (rb.getTag() == "1") {
-                        count += 1;
-                    }
+                    success.put(position, rb.getTag() == "1");
                 }
             });
             group.addView(btn_resp);

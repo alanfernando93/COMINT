@@ -1,5 +1,6 @@
 package huayllani.cripto.comint;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class search extends AppCompatActivity {
     }
 
     public void onSearch(View view) {
+        Toast.makeText(this, "Buscando...",Toast.LENGTH_LONG).show();
         EditText txt_search = (EditText)findViewById(R.id.edit_search);
 
         String character = txt_search.getText().toString();
@@ -32,7 +34,6 @@ public class search extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(search.this, data.get(position)[3].toString(), Toast.LENGTH_LONG).show();
 
                 Intent i = new Intent(search.this, ViewArancel.class);
                 i.putExtra("id", data.get(position)[0]);

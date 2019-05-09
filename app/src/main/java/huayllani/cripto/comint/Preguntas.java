@@ -1,5 +1,7 @@
 package huayllani.cripto.comint;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ public class Preguntas extends AppCompatActivity {
 
     ListView listView;
 
+    PreguntaAdapter adap;
     String idTema;
     ArrayList<String[]> preg = new ArrayList<String[]>();
 
@@ -40,6 +43,18 @@ public class Preguntas extends AppCompatActivity {
 
         preg = db.getPracticas(idTema);
 
-        listView.setAdapter(new PreguntaAdapter(this, preg));
+        adap =  new PreguntaAdapter(this, preg);
+        listView.setAdapter(adap);
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void submitOk(View view){
+        int count = 0;
+        for (Map.Entry<Integer, Boolean> point :adap.getPoints().entrySet()) {
+            if (point.getValue()) count += 1;
+        }
+        Toast.makeText(this,  count + " Respuestas correctas", Toast.LENGTH_LONG).show();
+        adap.initPoint();
     }
 }

@@ -23,7 +23,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/btn_atras"
                 android:layout_width="39dp"
                 android:layout_height="41dp"
                 android:layout_alignParentStart="true"
@@ -41,7 +41,7 @@
                 android:layout_weight="1" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/btn_house"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -74,7 +74,7 @@
 
     <TextView
         android:id="@+id/txt_partida"
-        android:layout_width="85dp"
+        android:layout_width="242dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -122,7 +122,7 @@
 
     <TextView
         android:id="@+id/txt_capitulo"
-        android:layout_width="84dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -133,8 +133,8 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/txt_ga"
-        android:layout_width="84dp"
+        android:id="@+id/txt_unidad"
+        android:layout_width="239dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -169,7 +169,7 @@
         android:text="Documento :" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/txt_document"
         android:layout_width="221dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -194,7 +194,7 @@
 
     <TextView
         android:id="@+id/txt_sidunea"
-        android:layout_width="117dp"
+        android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"

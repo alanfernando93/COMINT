@@ -9,6 +9,8 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class menu extends AppCompatActivity {
@@ -25,6 +27,15 @@ public class menu extends AppCompatActivity {
         roundedDrawable.setCornerRadius(originBitmap.getHeight());
         ImageView imageview = (ImageView) findViewById(R.id.img_menu);
         imageview.setImageDrawable(roundedDrawable);
+
+        ImageButton logout = (ImageButton) findViewById(R.id.btn_logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Main = new Intent(menu.this, menu.class);
+                startActivity(Main);
+            }
+        });
     }
 
     public void onTema(View view) {

@@ -1,5 +1,7 @@
 package huayllani.cripto.comint;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Switch;
@@ -249,13 +251,14 @@ public class DataBase {
     public ArrayList<String[]> getCapituloById(String id){
         ArrayList<String[]> data = new ArrayList<String[]>();
         try {
-            rs = query("select * from Capitulo where id=" + id);
+            rs = query("select * from Capitulo where id=" + id.trim());
+            Log.i("Query", "select * from Capitulo where id=" + id.trim());
             while (rs.next()) {
                 data.add(new String[]{
                         String.valueOf(rs.getInt("id")),
-                        rs.getString("id"),
-                        rs.getString("id"),
-                        String.valueOf(rs.getInt("id"))
+                        rs.getString("Nombre"),
+                        rs.getString("Nota"),
+                        String.valueOf(rs.getInt("idSeccion"))
                 });
             }
         } catch (Exception ex){
@@ -275,7 +278,8 @@ public class DataBase {
     public ArrayList<String[]> getDocumentById(String id){
         ArrayList<String[]> data = new ArrayList<String[]>();
         try {
-            rs = query("select * from Documentos where id=" + id);
+            rs = query("select * from Documentos where id=" + id.trim());
+            Log.i("Query", "select * from Documentos where id=" + id.trim());
             while (rs.next()) {
                 data.add(new String[]{
                         String.valueOf(rs.getInt("id")),

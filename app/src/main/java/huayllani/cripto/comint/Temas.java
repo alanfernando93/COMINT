@@ -27,8 +27,6 @@ public class Temas extends AppCompatActivity {
 
         this.id = getIntent().getStringExtra("id");
 
-        Toast.makeText(this, "id: " + id, Toast.LENGTH_LONG).show();
-
         value = db.getTemas(id);
 
         if (value.isEmpty()) {
