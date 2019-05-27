@@ -9,4 +9,5 @@
     <string name="txt_salir">Salir</string>
     <string name="app_toolbar">Menu de herramientas</string>
     <string name="edit_search">Search</string>
+    <string name="crossword_game">Crucigrama Iniciar</string>
 </resources>

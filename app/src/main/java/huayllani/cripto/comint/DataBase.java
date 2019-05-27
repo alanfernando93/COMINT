@@ -100,7 +100,7 @@ public class DataBase {
                         rs.getString("turno"),
                         rs.getString("paralelo"),
                         rs.getString("usuario"),
-                        rs.getString("contraseña")
+                        String.valueOf(rs.getInt("contraseña"))
                 });
             }
             if (data.size() > 0) is = true;
